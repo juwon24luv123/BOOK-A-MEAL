@@ -12,6 +12,11 @@ html,body{
     font-size: 82.5%;
 }
 
+/* .wrapper {
+    display: grid;
+    grid-gap: 20px;
+} */
+
 /* navbar content styling */
 .banner-section{
     height: 100vh;
@@ -42,7 +47,7 @@ html,body{
 /* ositu meal styling */
 .nav-bar{
     text-decoration: none;
-    color: #fff;
+    color: goldenrod;
     font-family: 'Berkshire Swash', cursive;
     padding: 0.6rem;
     
@@ -70,9 +75,6 @@ li a{
     background-color: goldenrod;
     color: white;   
 }
-
-
-
 
 /* header styling */
 .text-box{
@@ -225,9 +227,16 @@ li a{
     background: #fff;
     text-align: center;
     font-size: 10px;
-    display: block;
-    
+    display: block; 
 }
+/* order menu content styling */
+.container-para{
+    padding: 2px 4px;
+    text-transform: uppercase;
+    text-decoration-color: gray; 
+    font-family: 'Vidaloka', serif;
+}
+
 
 /* order menu */
 .order{
@@ -246,14 +255,6 @@ li a{
     color: #fff;
 }
 
-/* order menu content styling */
-.container{
-    padding: 2px 4px;
-    text-transform: uppercase;
-    text-decoration-color: gray; 
-    font-family: 'Vidaloka', serif;
-    /* text-align: justify; */
-}
 
 /* order menu order */
 .add-menu{
@@ -267,7 +268,7 @@ li a{
 /* order menu styling */
 .menu2 {
     font-size: 20px;
-    margin-top: 7%;
+    margin-top: 4%;
     color: goldenrod;
     font-family: 'Tangerine', cursive;
 }
@@ -286,7 +287,7 @@ li a{
 }
 /* footer padding  */
 footer {
-    padding-top: 50px;
+    padding-top: 35px;
 }
 /* footer ul and li stying  */
 ul.footer li {
@@ -302,10 +303,202 @@ ul.footer li {
 
 
 
-/* media query */
-@media only screen and(min-width:1024px){
- .wrapper{
-     background: blue;
-     font-size: 30%;
- }
+@media (max-width: 1024px){
+    .banner-section{
+        /* height: 100vh; */
+        font-size: 10px;
+        
+    }
+    .navbar {
+        /* display: flex;  */
+        font-size: 2.2rem;
+        height: 100px;
+        /* margin: 3rem; */
+    }
+    .navigation{
+        /* display: flex; */
+        font-size: 2.2rem;
+    }
+
+    /* navbar li stying */
+    .nav{
+        font-size: 2.8rem;
+        padding: 20px;
+    }
+
+    .navbar-brand {
+        /* margin: -1rem; */
+        font-size: 2.5rem;
+    }
+    /* ositu meal styling */
+    .nav-bar{
+        font-size: 4rem
+    }
+
+    /* header styling */
+    .heading-primary{
+        margin-bottom: 1.8rem;
+    }
+    /* header styling */
+    .heading-primary-main{
+        font-size: 3rem;
+        letter-spacing: 0.1rem;
+
+    }
+    /* header styling */
+    .heading-primary-sub{
+        font-size: 3rem;
+        letter-spacing: 0.2rem;
+    }
+    
+    /* button styling */
+    .btn:link,
+    .btn:visited{
+        text-transform: uppercase;
+        border-radius: 3rem;
+        transition: all .2s;
+    }
+    /* button styling */
+    .btn-white{
+        background: #fff;
+        padding: 2rem 3rem;
+        font-size: 2rem;
+    }
+    .add-menu{
+        text-transform: uppercase;
+        font-family: 'EB Garamond', serif;
+        text-align: justify;
+        letter-spacing: 2px;
+        text-align: center;
+        /* margin-top: 3rem; */
+        
+    }
+    /* order menu styling */
+    .menu2 {
+        font-size: 20px;
+        margin-top: 40px;
+        color: goldenrod;
+        font-family: 'Tangerine', cursive;
+    }
 }
+
+
+
+
+@media (max-width: 500px ){
+    .wrapper{
+        height: 100vh;
+        width: 100%;
+    }
+    .banner-section{
+        font-size: 20px;
+    }
+    .navbar {
+        display: flex;
+        font-size: 2.5rem;
+        height: 70px;
+    }
+    .nav-bar{
+        display: flex;
+        padding: 1.2rem;
+        font-size: 1.5rem
+        
+    }
+
+    /* navbar li stying */
+    .nav{
+        font-size: 1.3rem;
+        font-weight: 400;    
+    }
+    .navbar-brand {
+        margin: -1rem;
+        font-size: 1.3rem;
+    }
+ 
+    /* header styling */
+    .heading-primary{
+        margin-bottom: 1.8rem;
+    }
+    /* header styling */
+    .heading-primary-main{
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+
+    }
+    /* header styling */
+    .heading-primary-sub{
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+    
+    /* button styling */
+
+    /* button styling */
+    .btn-white{
+        background: #fff;
+        padding: 0.5rem 0.4rem;
+    }
+
+    /* order menu styling */
+    .menu2 {
+        font-size: 10px;
+        margin: 5px;
+    }
+    .grid{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        height: 100%;
+    }
+    .card{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+        transition: 0.4s;
+        width: 100%;
+        font-size: 10px;
+        /* display: ; */
+        
+    } 
+     .box{
+        background: #fff;
+        width: 500px;
+        height: 100vh;
+    }
+    
+    /* [class*='col-']{
+        float: left;
+        display: flex;
+        min-height: 200px;
+        padding: 10px;
+    } */
+    .grid2{
+        margin: 10px;
+        padding: 10px;
+        border: 5px;
+        /* margin-bottom: 30px; */
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+    }
+    /* cards menu styling */
+
+    .order{
+        padding: 5px;
+        font-size: 15px;
+        display: block;
+        width: 100px;
+    }
+    .container-para{
+        padding: 1px 2px;
+        width: 600px;
+        /* height: 100%; */
+        font-size: 15px;
+        display: inline-block;
+        /* text-align: center; */
+        /* justify-content: center; */
+
+    }
+    img{
+        width: 230px;
+        display: flex;
+    }
+}
+

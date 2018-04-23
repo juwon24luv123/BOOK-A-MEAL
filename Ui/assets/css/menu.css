@@ -1,9 +1,9 @@
-
-
 .form{
     padding: 20px;
     width: 300px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+    display: none;
+    position: fixed;
 }
 
 input{
@@ -34,10 +34,13 @@ input{
 }
 .closeBtn{
     float: right;
-    font-size: 15px;
+    font-size: 20px;
+    color: #ccc;
+
 }
-.closeBtn:hover{
+.closeBtn:hover, .closeBtn:focus{
     color:#000;
+    cursor: pointer;
 }
 
 .modal-header{
@@ -54,7 +57,7 @@ input{
     align-content: center;
     border: 1px solid black;
     width: 300px;
-    height: 350px;
+    height: 300px;
     margin-left: auto;
 }
 
@@ -195,4 +198,14 @@ li a{
     float: left;
     min-height: 200px;
     padding: 20px;
+}
+
+.button{
+    background: goldenrod;
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+}
+.button:hover{
+    background: #333;
 }

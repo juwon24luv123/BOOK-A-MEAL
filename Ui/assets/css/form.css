@@ -7,6 +7,7 @@ html, body{
 }
 .container{
     height: 100vh;
+    
 }
 h1{
     text-align: center;
@@ -18,7 +19,7 @@ h1{
 }
 
 form{
-    width: 50%;
+    width: 60%;
     padding: 20px;
     margin-top: 5px;
     display: flex;
@@ -26,6 +27,9 @@ form{
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
+    height: 100%;
+    box-shadow: 0 0 3px 3px rgb(255, 255, 255);
+    background:rgba(235, 255, 120, 0.5);
 
 }
 
@@ -34,18 +38,23 @@ form{
 	flex-direction:column;
     margin: 1px 0;
     font-size: 20px;
+    color: goldenrod;
     font-family: 'Saira Extra Condensed', sans-serif;
 }
 
+
 .Submit{
 	padding: 4px 2px;
-	font-size: 15px;
+	font-size: 20px;
 	margin: 1px ;
 	color: #fff;
 	text-align:center;
 	border-radius: 4px;
 	border: none;
-	background-color: #188fff;
+    background-color: #188fff;
+    border-radius: 30px;
+    height:40px;
+
 
 }
 .Submit:hover{
@@ -53,14 +62,18 @@ form{
     border:1px solid blue;
 }
 input{
-	height: 20px;
+	height: 30px;
 	margin: 2px 0;
-	font-size: 20px;
-	padding: 5px;
-	border-radius: 2px;
+	font-size: 15px;
+	padding: 10px;
+	border-radius: 10px;
 	border:1px solid black;
     width: 100%;
     color: gray;
+    background: #fff;
+    cursor: pointer;
+    align-self: center;
+    transition: all .5s ease;
     font-family: 'Berkshire Swash', cursive;
 }
 

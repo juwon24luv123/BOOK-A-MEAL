@@ -7,7 +7,6 @@ import mealsDB from '../.data/meals';
  */
 class Meals {
   /**
-  //  * @method next
    * @method getMeals
    * @param {object} req
    * @param {object} res
@@ -59,6 +58,31 @@ class Meals {
       res.send(meals);
     }
   }
+  /**
+   * @method deleteMeal
+   * @param {object} req
+   * @param {object} res
+   * @return {array} Return a list of Meals
+   */
+  static deleteMeals(req, res) {
+    if (res.statusCode !== 200) {
+      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
+    } else {
+      const meals = mealsDB.filter((meal) => {
+        let data = [];
+        const parsedId = parseInt(req.query.id, 10);
+        if (parsedId !== meal.id) {
+          data = data.concat(meal);
+          return data;
+        }
+      });
+      res.send({
+        Message: 'meal has been deleted',
+        data: meals
+      });
+    }
+  }
 }
+
 
 export default Meals;

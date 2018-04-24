@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node -- server/src/app.js",
-    "build": "babel ./server/src -d ./server/build",
     "lint": "eslint * --fix"
   },
   "repository": {
@@ -22,13 +21,13 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "mocha": "^5.1.1"
+    "eslint-config-airbnb-base": "^12.1.0"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "eslint-plugin-import": "^2.11.0",
     "express": "^4.16.3",
+    "mocha": "^5.1.1",
     "morgan": "^1.9.0"
   }
 }

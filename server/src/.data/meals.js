@@ -11,6 +11,12 @@ const meals = [
     description: 'vegetable, turkey and beef',
     price: 1000,
 },
+{
+    id: 5,
+    tittle: 'Eba',
+    description: 'vegetable, turkey and beef',
+    price: 1000,
+},  
 ];
 
 export default meals;

@@ -38,8 +38,27 @@ class Meals {
     }
   }
   /**
-   *
+   * @method putMeal
+   * @param {object} req
+   * @param {oblect} res
+   * @return {array}  Returns a list of Meals
    */
+  static putMeals(req, res) {
+    if (res.statusCode !== 200) {
+      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
+    } else {
+      const meals = mealsDB.filter((meal, index) => {
+        if (meal.id === req.body.id) {
+          mealsDB[index] = req.body;
+          return res.send(mealsDB[index]);
+        }
+        return res.status(404).send({
+          Error: `${req.body.title} Does not exist`
+        });
+      });
+      res.send(meals);
+    }
+  }
 }
 
 export default Meals;

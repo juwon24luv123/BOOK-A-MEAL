@@ -27,6 +27,9 @@ form{
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
+    height: 100%;
+    box-shadow: 0 0 3px 3px rgb(255, 255, 255);
+    background:rgba(235, 255, 120, 0.5);
 
 }
 
@@ -61,14 +64,18 @@ form{
     font-size: 15px;
 }
 input{
-	height: 20px;
+	height: 30px;
 	margin: 2px 0;
-	font-size: 20px;
-	padding: 5px;
+	font-size: 15px;
+	padding: 10px;
 	border-radius: 2px;
 	border:1px solid black;
     width: 100%;
     color: gray;
+    background: #fff;
+    cursor: pointer;
+    align-self: center;
+    transition: all .5s ease;
     font-family: 'Berkshire Swash', cursive;
 }
 

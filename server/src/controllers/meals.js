@@ -22,7 +22,7 @@ class Meals {
     }
   }
   /**
-   * @method postMeal
+   * @method postMeals
    * @param {object} req
    * @param {object} res
    * @return {array} Returns a list of Meals
@@ -37,19 +37,24 @@ class Meals {
     }
   }
   /**
-   * @method putMeal
+   * @method putMeals
    * @param {object} req
    * @param {oblect} res
    * @return {array}  Returns a list of Meals
    */
-  static putMeals(req, res) {
+  static putMeal(req, res) {
     if (res.statusCode !== 200) {
       res.status(400).send({ Message: 'someting went wrong, could not update meal' });
     } else {
       const meals = mealsDB.filter((meal, index) => {
         if (meal.id === req.body.id) {
-          mealsDB[index] = req.body;
-          return res.send(mealsDB[index]);
+          meal.id = req.body.id;
+          meal.tittle = req.body.tittle;
+          meal.description = req.body.description;
+          meal.price = req.body.price;
+          meal.imageUrl = req.body.imageUrl;
+          mealsDB[index] = meal;
+          return res.send(meal);
         }
         return res.status(404).send({
           Error: `${req.body.title} Does not exist`
@@ -78,7 +83,7 @@ class Meals {
       });
       res.send({
         Message: 'meal has been deleted',
-        data: meals
+        meal: meals
       });
     }
   }

@@ -8,7 +8,7 @@ const meals = [
     },
     {
         id: 2,
-        tittle: 'Eba',
+        tittle: 'semo',
         description: 'vegetable, turkey and beef',
         price: 1000,
         imageUrl: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',

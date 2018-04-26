@@ -1,4 +1,7 @@
 import mealsDB from '../.data/meals';
+// import expressValidator from 'express-validator';
+// const { check, validationResult } = require('express-validator/check');
+
 
 /**
  * @exports
@@ -28,14 +31,13 @@ class Meals {
    * @return {array} Returns a list of Meals
    */
   static postMeals(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(404).send({ Message: 'someting went wrong, could not add meal' });
-    } else {
-      res.status(200).send({
-        Message: 'Meal was added successfully',
-        meals: req.body
-      });
+    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
+      return res.status(400).send({ Message: 'all field are required' });
     }
+    return res.status(201).send({
+      Message: 'Meal was added successfully',
+      meals: req.body
+    });
   }
   /**
    * @method putMeals

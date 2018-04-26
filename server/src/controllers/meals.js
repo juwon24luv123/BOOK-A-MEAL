@@ -32,6 +32,7 @@ class Meals {
       res.status(404).send({ Message: 'someting went wrong, could not add meal' });
     } else {
       res.status(200).send({
+        Message: 'Meal was added successfully',
         meals: req.body
       });
     }

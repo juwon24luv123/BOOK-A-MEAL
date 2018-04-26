@@ -1,6 +1,5 @@
 import express from 'express';
 import logger from 'morgan';
-// import mocha from 'mocha';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes';
 
@@ -20,3 +19,5 @@ app.use('/api/v1', apiRoutes);
 app.listen(port, () => {
   console.log('Started on port 3000');
 });
+
+export default app;

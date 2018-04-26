@@ -1,6 +1,7 @@
 import express from 'express';
 import MealsController from '../controllers/meals';
 
+// const mealController = new mealController();
 const mealsRoute = express.Router();
 
 mealsRoute.get('/', MealsController.getMeals);

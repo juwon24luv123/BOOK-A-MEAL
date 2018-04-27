@@ -1,4 +1,4 @@
-import orderDb from '../.data/order';
+import orderDb from '../.data/order.json';
 
 /**
  * @exports
@@ -28,24 +28,38 @@ class Order {
    * @returns {array} return list of order
    */
   static putOrder(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
-    } else {
-      const orders = orderDb.filter((order, index) => {
-        if (order.id === req.body.id) {
-          order.id = req.body.id;
-          order.tittle = req.body.tittle;
-          order.description = req.body.description;
-          order.price = req.body.price;
-          order.imageUrl = req.body.imageUrl;
-          orderDb[index] = order;
-          return res.send(order);
-        }
-        return res.status(404).send({
-          Error: `${req.body.title} Does not exist`
+    const orderArray = orderDb;
+    let i;
+    for (i = 0; i < orderArray.length; i += 1) {
+      if (orderArray[i].id === req.body.id) {
+        orderArray[i].tittle = req.body.tittle;
+        orderArray[i].description = req.body.description;
+        orderArray[i].price = req.body.price;
+        orderArray[i].imageUrl = req.body.imageUrl;
+        orderArray[i] = req.body;
+        console.log(req.body);
+        res.status(201).send({
+          order: orderArray[i]
         });
+      }
+    }
+    return res.status(404).json({
+      Error: `${req.body.id} order id Does not exist`
+    });
+  }
+  /**
+ * @method getOrder
+ * @param {object} req
+ * @param {object} res
+ * @returns {array} retutn all list order
+ */
+  static getOrder(req, res) {
+    if (res.statusCode !== 200) {
+      res.status(404).send({ Message: 'Something went wrong, cant get all the orders' });
+    } else {
+      res.status(200).send({
+        order: orderDb
       });
-      res.send(orders);
     }
   }
 }

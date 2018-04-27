@@ -102,12 +102,18 @@ describe('Test For meal update Route', () => {
   });
 });
 
-describe('Test For Post Meal Route', () => {
-  describe('Post /mealsRoutes', () => {
+describe('Test For Post Menu Option Route', () => {
+  describe('Post /menuRoutes', () => {
     it('it should Add a menu option if all field are right', (done) => {
       chai.request(app)
         .post('/api/v1/menu')
-        .send({ menuOptions: 'rice, fufu, salad' })
+        .send({
+          id: 20,
+          tittle: 'ryry',
+          description: 'jolli',
+          price: 1500,
+          imageUrl: 'rereerre'
+        })
         .end((error, res) => {
           expect(res).to.have.status(201);
           done();

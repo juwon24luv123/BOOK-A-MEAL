@@ -50,7 +50,7 @@ describe('Test For Post Meal Route', () => {
           imageUrl: 'rereerre'
         })
         .end((error, res) => {
-          expect(res).to.have.status(400);
+          expect(res).to.have.status(404);
           done();
         });
     });
@@ -133,29 +133,59 @@ describe('Test For Post Menu Option Route', () => {
 });
 
 describe('Test For put order Route', () => {
-  describe('put /orderRoutes', () => {
+  describe('post /orderRoutes', () => {
     it('it should create new order meal option if all field are right', (done) => {
       chai.request(app)
-        .put('/api/v1/order')
+        .post('/api/v1/order')
         .send({
-          id: 10,
+          id: 6,
           tittle: 'fried rice',
           quantity: 3,
           time: 'evening',
         })
         .end((error, res) => {
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(201);
           done();
         });
     });
-    it('it should not add order list option if any of the field is not supplied', (done) => {
+    it('it should not add order list option if any of the field empty', (done) => {
       chai.request(app)
         .put('/api/v1/order')
-        .send({
-
-        })
+        .send({})
         .end((error, res) => {
           expect(res).to.have.status(404);
+          done();
+        });
+    });
+    it('it should not create new order meal if one of the field is not provided', (done) => {
+      chai.request(app)
+        .post('/api/v1/order')
+        .send({
+          quantity: 3,
+          time: 'evening',
+        })
+        .end((error, res) => {
+          expect(res).to.have.status(400);
+          done();
+        });
+    });
+  });
+});
+
+
+describe('Test For put order Route', () => {
+  describe('post /orderRoutes', () => {
+    it('it should  selete meal from the order and make a request for order', (done) => {
+      chai.request(app)
+        .post('/api/v1/order')
+        .send({
+          id: 8,
+          tittle: 'fried rice',
+          quantity: 3,
+          time: 'evening',
+        })
+        .end((error, res) => {
+          expect(res).to.have.status(201);
           done();
         });
     });

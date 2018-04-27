@@ -131,3 +131,33 @@ describe('Test For Post Menu Option Route', () => {
     });
   });
 });
+
+describe('Test For Post order Route', () => {
+  describe('Post /orderRoutes', () => {
+    it('it should create new order meal option if all field are right', (done) => {
+      chai.request(app)
+        .post('/api/v1/order')
+        .send({
+          id: 10,
+          tittle: 'fried rice',
+          quantity: 3,
+          time: 'evening',
+        })
+        .end((error, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    it('it should not add order list option if any of the field is not supplied', (done) => {
+      chai.request(app)
+        .post('/api/v1/order')
+        .send({
+
+        })
+        .end((error, res) => {
+          expect(res).to.have.status(404);
+          done();
+        });
+    });
+  });
+});

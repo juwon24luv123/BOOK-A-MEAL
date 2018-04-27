@@ -1,7 +1,6 @@
-import mealsDB from '../.data/meals';
+import mealsDB from '../.data/meals.json';
 // import expressValidator from 'express-validator';
 // const { check, validationResult } = require('express-validator/check');
-
 
 /**
  * @exports
@@ -46,14 +45,26 @@ class Meals {
    * @return {array}  Returns a list of Meals
    */
   static putMeal(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
-      res.status(400).send({ Message: 'someting went wrong, all fields are necessary' });
-    } return res.status(201).send({
-      message: '$ meal option updated succesfully',
-      meals: req.body
+    const orderArray = mealsDB;
+    let i;
+    for (i = 0; i < orderArray.length; i++) {
+      if (orderArray[i].id === req.body.id) {
+        orderArray[i].tittle = req.body.tittle;
+        orderArray[i].description = req.body.description;
+        orderArray[i].price = req.body.price;
+        orderArray[i].imageUrl = req.body.imageUrl;
+        orderArray[i] = req.body;
+        console.log(req.body);
+
+        res.status(201).send({
+          meals: orderArray[i]
+        });
+      }
+    }
+    return res.status(404).json({
+      success: 'incorrect field supplied.'
     });
   }
-
   /**
    * @method deleteMeal
    * @param {object} req

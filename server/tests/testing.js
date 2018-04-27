@@ -33,18 +33,11 @@ describe('Test For Post Meal Route', () => {
         })
         .end((error, res) => {
           expect(res).to.have.status(201);
-          // expect(res.body.meals.tittle).to.equals('rice');
-          // expect(res.body.meals.imageUrl).to.equals('image path');
-          // expect(res.body.meals.description).to.equals('plantain');
-          // expect(res.body.meals.id).to.equals(20);
           done();
         });
     });
-  });
-});
 
-describe('Test For Post Meal Route', () => {
-  describe('Post /mealsRoutes', () => {
+
     it('should not create a meal when all required properties are not provided', (done) => {
       chai.request(app)
         .post('/api/v1/meals')
@@ -57,6 +50,51 @@ describe('Test For Post Meal Route', () => {
         })
         .end((error, res) => {
           expect(res).to.have.status(400);
+          done();
+        });
+    });
+    it('should update meal option', (done) => {
+      chai.request(app)
+        .post('/api/v1/meals')
+        .send({
+          id: 5,
+          tittle: 'iyan aladuke',
+          description: 'delicious meal',
+          price: 1000,
+          imageUrl: 'niceIMG'
+        })
+        .end((error, res) => {
+          expect(res).to.have.status(201);
+          done();
+        });
+    });
+  });
+});
+
+
+describe('Test For meal update Route', () => {
+  describe('Post /mealsRoutes/id', () => {
+    it('should retun a error for post without field', (done) => {
+      chai.request(app)
+        .post('/api/v1/meals/')
+        .send({})
+        .end((error, res) => {
+          expect(res).to.have.status(400);
+          done();
+        });
+    });
+  });
+});
+
+describe('Test For meal update Route', () => {
+  describe('Delete /mealsRoutes/id', () => {
+    it('should delete meal with required field', (done) => {
+      chai.request(app)
+        .delete('/api/v1/meals')
+        .send({
+        })
+        .end((error, res) => {
+          expect(res).to.have.status(204);
           done();
         });
     });

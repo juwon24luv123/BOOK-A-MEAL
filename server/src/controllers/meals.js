@@ -46,7 +46,7 @@ class Meals {
    * @return {array}  Returns a list of Meals
    */
   static putMeal(req, res) {
-    if (res.statusCode !== 200) {
+    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
       res.status(400).send({ Message: 'someting went wrong, could not update meal' });
     } else {
       const meals = mealsDB.filter((meal, index) => {
@@ -59,8 +59,8 @@ class Meals {
           mealsDB[index] = meal;
           return res.send(meal);
         }
-        return res.status(404).send({
-          Error: `${req.body.title} Does not exist`
+        return res.status(201).send({
+          message: `${req.body.title} meal option updated succesfully`
         });
       });
       res.send(meals);
@@ -73,8 +73,8 @@ class Meals {
    * @return {array} Return a list of Meals
    */
   static deleteMeals(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
+    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
+      res.status(204).send({ Message: '' });
     } else {
       const meals = mealsDB.filter((meal) => {
         let data = [];

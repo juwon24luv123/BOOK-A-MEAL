@@ -41,7 +41,7 @@ describe('Test For Post Meal Route', () => {
 
     it('should not create a meal when all required properties are not provided', (done) => {
       chai.request(app)
-        .post('/api/v1/meals')
+        .put('/api/v1/meals')
         .send({
           id: 20,
           tittle: 'ryry',
@@ -56,7 +56,7 @@ describe('Test For Post Meal Route', () => {
     });
     it('should update meal option', (done) => {
       chai.request(app)
-        .post('/api/v1/meals')
+        .put('/api/v1/meals')
         .send({
           id: 5,
           tittle: 'iyan aladuke',
@@ -75,7 +75,7 @@ describe('Test For Post Meal Route', () => {
 
 describe('Test For meal update Route', () => {
   describe('Post /mealsRoutes/id', () => {
-    it('should retun a error for post without field', (done) => {
+    it('should return a error for post without field', (done) => {
       chai.request(app)
         .post('/api/v1/meals/')
         .send({})
@@ -132,11 +132,11 @@ describe('Test For Post Menu Option Route', () => {
   });
 });
 
-describe('Test For Post order Route', () => {
-  describe('Post /orderRoutes', () => {
+describe('Test For put order Route', () => {
+  describe('put /orderRoutes', () => {
     it('it should create new order meal option if all field are right', (done) => {
       chai.request(app)
-        .post('/api/v1/order')
+        .put('/api/v1/order')
         .send({
           id: 10,
           tittle: 'fried rice',
@@ -150,7 +150,7 @@ describe('Test For Post order Route', () => {
     });
     it('it should not add order list option if any of the field is not supplied', (done) => {
       chai.request(app)
-        .post('/api/v1/order')
+        .put('/api/v1/order')
         .send({
 
         })

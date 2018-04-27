@@ -33,12 +33,11 @@ class Order {
     for (i = 0; i < orderArray.length; i += 1) {
       if (orderArray[i].id === req.body.id) {
         orderArray[i].tittle = req.body.tittle;
-        orderArray[i].description = req.body.description;
-        orderArray[i].price = req.body.price;
-        orderArray[i].imageUrl = req.body.imageUrl;
+        orderArray[i].description = req.body.time;
+        orderArray[i].price = req.body.quantity;
         orderArray[i] = req.body;
         console.log(req.body);
-        res.status(201).send({
+        res.status(200).send({
           order: orderArray[i]
         });
       }

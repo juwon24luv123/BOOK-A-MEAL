@@ -47,25 +47,13 @@ class Meals {
    */
   static putMeal(req, res) {
     if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
-      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
-    } else {
-      const meals = mealsDB.filter((meal, index) => {
-        if (meal.id === req.body.id) {
-          meal.id = req.body.id;
-          meal.tittle = req.body.tittle;
-          meal.description = req.body.description;
-          meal.price = req.body.price;
-          meal.imageUrl = req.body.imageUrl;
-          mealsDB[index] = meal;
-          return res.send(meal);
-        }
-        return res.status(201).send({
-          message: `${req.body.title} meal option updated succesfully`
-        });
-      });
-      res.send(meals);
-    }
+      res.status(400).send({ Message: 'someting went wrong, all fields are necessary' });
+    } return res.status(201).send({
+      message: '$ meal option updated succesfully',
+      meals: req.body
+    });
   }
+
   /**
    * @method deleteMeal
    * @param {object} req

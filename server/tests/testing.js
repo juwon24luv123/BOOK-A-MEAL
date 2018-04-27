@@ -2,6 +2,7 @@ import mocha from 'mocha';
 import chai, { assert, expect } from 'chai';
 import chaiHtpp from 'chai-http';
 import mealsRoute from '../src/routes/meals';
+import menuRoute from '../src/routes/menu';
 import app from '../src/app';
 // import apiRoutes from '../src/routes/index';
 
@@ -95,6 +96,30 @@ describe('Test For meal update Route', () => {
         })
         .end((error, res) => {
           expect(res).to.have.status(204);
+          done();
+        });
+    });
+  });
+});
+
+describe('Test For Post Meal Route', () => {
+  describe('Post /mealsRoutes', () => {
+    it('it should Add a menu option if all field are right', (done) => {
+      chai.request(app)
+        .post('/api/v1/menu')
+        .send({ menuOptions: 'rice, fufu, salad' })
+        .end((error, res) => {
+          expect(res).to.have.status(201);
+          done();
+        });
+    });
+
+    it('it should not add menu option if all fields are not supplied', (done) => {
+      chai.request(app)
+        .post('/api/v1/menu')
+        .send({})
+        .end((error, res) => {
+          expect(res).to.have.status(404);
           done();
         });
     });

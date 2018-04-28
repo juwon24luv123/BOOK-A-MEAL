@@ -1,0 +1,35 @@
+
+[
+    {
+        "id": 12,
+        "tittle": "Jollof rice",
+        "time": "breakfast",
+        "quantity": 6
+    },
+    {
+        "id": 2,
+        "tittle": "Eba",
+        "time": "lunch",
+        "quantity": 3
+    },
+
+    {
+        "id": 32,
+        "tittle": "Eba",
+        "time": "dinner",
+        "quantity": 4
+
+    },
+    {
+        "id": 34,
+        "tittle": "refreshment",
+        "time": "evening",
+        "quantity": 1000
+    }   
+]
+
+
+
+
+
+

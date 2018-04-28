@@ -55,7 +55,7 @@ class Order {
     if (res.statusCode !== 200) {
       res.status(404).send({ Message: 'Something went wrong, cant get all the orders' });
     } else {
-      res.status(200).send({
+      res.status(201).send({
         order: orderDb
       });
     }

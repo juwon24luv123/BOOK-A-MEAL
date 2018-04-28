@@ -54,9 +54,7 @@ class Meals {
         orderArray[i].price = req.body.price;
         orderArray[i].imageUrl = req.body.imageUrl;
         orderArray[i] = req.body;
-        console.log(req.body);
-
-        res.status(201).send({
+        return res.status(201).send({
           meals: orderArray[i]
         });
       }

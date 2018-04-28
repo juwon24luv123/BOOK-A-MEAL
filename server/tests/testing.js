@@ -3,6 +3,7 @@ import chai, { assert, expect } from 'chai';
 import chaiHtpp from 'chai-http';
 import mealsRoute from '../src/routes/meals';
 import menuRoute from '../src/routes/menu';
+import orderRoute from '../src/routes/order';
 import app from '../src/app';
 // import apiRoutes from '../src/routes/index';
 
@@ -184,6 +185,19 @@ describe('Test For put order Route', () => {
           quantity: 3,
           time: 'evening',
         })
+        .end((error, res) => {
+          expect(res).to.have.status(201);
+          done();
+        });
+    });
+  });
+});
+
+describe('Test For get order Route', () => {
+  describe('post /orderRoutes', () => {
+    it('it should populate all the order', (done) => {
+      chai.request(app)
+        .get('/api/v1/order')
         .end((error, res) => {
           expect(res).to.have.status(201);
           done();

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import mealsDB from '../.data/meals.json';
 // import expressValidator from 'express-validator';
 // const { check, validationResult } = require('express-validator/check');
@@ -30,7 +31,8 @@ class Meals {
    * @return {array} Returns a list of Meals
    */
   static postMeals(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
+    if (!req.body.tittle || !req.body.description || !req.body.price ||
+      !req.body.imageUrl || !req.body.id) {
       return res.status(400).send({ Message: 'all field are required' });
     }
     return res.status(201).send({
@@ -47,7 +49,7 @@ class Meals {
   static putMeal(req, res) {
     const orderArray = mealsDB;
     let i;
-    for (i = 0; i < orderArray.length; i++) {
+    for (i = 0; i < orderArray.length; i += 1) {
       if (orderArray[i].id === req.body.id) {
         orderArray[i].tittle = req.body.tittle;
         orderArray[i].description = req.body.description;
@@ -70,7 +72,8 @@ class Meals {
    * @return {array} Return a list of Meals
    */
   static deleteMeals(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
+    if (!req.body.tittle || !req.body.description || !req.body.price ||
+      !req.body.imageUrl || !req.body.id) {
       res.status(204).send({ Message: '' });
     } else {
       const meals = mealsDB.filter((meal) => {

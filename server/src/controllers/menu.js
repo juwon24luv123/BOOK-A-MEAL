@@ -13,7 +13,8 @@ class Menu {
    * @returns {array} Returns a lists of Meals
   */
   static postMenu(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price || !req.body.imageUrl || !req.body.id) {
+    if (!req.body.tittle || !req.body.description || !req.body.price ||
+      !req.body.imageUrl || !req.body.id) {
       return res.status(404).send({ Message: 'Something went wrong, all fields are required' });
     } return res.status(201).send({
       Message: 'Meal was added successfully',

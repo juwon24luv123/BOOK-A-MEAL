@@ -30,7 +30,7 @@ class Order {
   static putOrder(req, res) {
     const orderArray = orderDb;
     let i;
-    for (i = 0; i < orderArray.length; i++) {
+    for (i = 0; i < orderArray.length; i += 1) {
       if (orderArray[i].id === req.body.id) {
         orderArray[i].tittle = req.body.tittle;
         orderArray[i].time = req.body.time;

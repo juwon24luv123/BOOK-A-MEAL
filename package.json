@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cross-env NODE_ENV=development babel ./server/src -d ./server/dist",
     "start": "nodemon --exec babel-node -- server/src/app.js",
-    "lint": "eslint * --fix",
+    "lint": "eslint **/*.js . --fix",
     "test": "node_modules/.bin/mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime"
   },
   "repository": {

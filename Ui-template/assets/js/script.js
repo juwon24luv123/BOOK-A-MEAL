@@ -1,4 +1,5 @@
 // get form element
+/* eslint-disable */
 
 const modal = document.getElementById('modal');
 const modalBtn = document.getElementById('modalBtn');

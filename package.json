@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cross-env NODE_ENV=development babel ./server/src -d ./server/dist",
     "start": "nodemon --exec babel-node -- server/src/app.js",
-    "lint": "eslint * --fix"
+    "lint": "eslint **/*.js . --fix",
+    "test": "node_modules/.bin/mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime"
   },
   "repository": {
     "type": "git",
@@ -19,14 +21,20 @@
   "homepage": "https://github.com/juwon24luv123/BOOK-A-MEAL#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0"
+    "eslint-config-airbnb-base": "^12.1.0",
+    "expect": "^22.4.3"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "eslint-plugin-import": "^2.11.0",
     "express": "^4.16.3",
+    "express-validator": "^5.1.2",
+    "jsonwebtoken": "^8.2.1",
     "mocha": "^5.1.1",
     "morgan": "^1.9.0"
   }

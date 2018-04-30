@@ -1,4 +1,7 @@
-import mealsDB from '../.data/meals';
+/* eslint-disable */
+import mealsDB from '../.data/meals.json';
+// import expressValidator from 'express-validator';
+// const { check, validationResult } = require('express-validator/check');
 
 /**
  * @exports
@@ -28,13 +31,14 @@ class Meals {
    * @return {array} Returns a list of Meals
    */
   static postMeals(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(404).send({ Message: 'someting went wrong, could not add meal' });
-    } else {
-      res.status(200).send({
-        meals: req.body
-      });
+    if (!req.body.tittle || !req.body.description || !req.body.price ||
+      !req.body.imageUrl || !req.body.id) {
+      return res.status(400).send({ Message: 'all field are required' });
     }
+    return res.status(201).send({
+      Message: 'Meal was added successfully',
+      meals: req.body
+    });
   }
   /**
    * @method putMeals
@@ -43,25 +47,23 @@ class Meals {
    * @return {array}  Returns a list of Meals
    */
   static putMeal(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
-    } else {
-      const meals = mealsDB.filter((meal, index) => {
-        if (meal.id === req.body.id) {
-          meal.id = req.body.id;
-          meal.tittle = req.body.tittle;
-          meal.description = req.body.description;
-          meal.price = req.body.price;
-          meal.imageUrl = req.body.imageUrl;
-          mealsDB[index] = meal;
-          return res.send(meal);
-        }
-        return res.status(404).send({
-          Error: `${req.body.title} Does not exist`
+    const orderArray = mealsDB;
+    let i;
+    for (i = 0; i < orderArray.length; i += 1) {
+      if (orderArray[i].id === req.body.id) {
+        orderArray[i].tittle = req.body.tittle;
+        orderArray[i].description = req.body.description;
+        orderArray[i].price = req.body.price;
+        orderArray[i].imageUrl = req.body.imageUrl;
+        orderArray[i] = req.body;
+        return res.status(201).send({
+          meals: orderArray[i]
         });
-      });
-      res.send(meals);
+      }
     }
+    return res.status(404).json({
+      success: 'incorrect field supplied.'
+    });
   }
   /**
    * @method deleteMeal
@@ -70,8 +72,9 @@ class Meals {
    * @return {array} Return a list of Meals
    */
   static deleteMeals(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(400).send({ Message: 'someting went wrong, could not update meal' });
+    if (!req.body.tittle || !req.body.description || !req.body.price ||
+      !req.body.imageUrl || !req.body.id) {
+      res.status(204).send({ Message: '' });
     } else {
       const meals = mealsDB.filter((meal) => {
         let data = [];

@@ -3,7 +3,7 @@ html, body{
 	height:100vh;
 	padding: 0;
     margin: 0;
-    background: #eeeeee;
+    background: black;
 }
 .container{
     height: 100vh;
@@ -19,7 +19,7 @@ h1{
 }
 
 form{
-    width: 50%;
+    width: 55%;
     padding: 20px;
     margin-top: 5px;
     display: flex;
@@ -28,8 +28,9 @@ form{
     justify-content: center;
     margin: 0 auto;
     height: 100%;
-    box-shadow: 0 0 3px 3px rgb(255, 255, 255);
-    background:rgba(235, 255, 120, 0.5);
+    box-shadow: 0 0 3px 3px;
+    background:rgba(255, 224, 120, 0.226);
+    background: #fff;
 
 }
 
@@ -51,6 +52,7 @@ form{
 	border: none;
     background-color: #188fff;
     width: 100%;
+    cursor: pointer;
 
 }
 .Submit:hover{
@@ -89,14 +91,14 @@ input{
  .float, .left{
     width: 50%;
     float: left;
-    background:#fff;
+    background:rgba(255, 230, 120, 0.582);
+    background-image: url('../img/rest.jpg');
     height: 100vh;
    
 }
  .float, .right{
     width: 50%;
     float: right;
-    background: #fff;
     height: 100vh;
 }
 

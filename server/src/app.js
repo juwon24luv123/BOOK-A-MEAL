@@ -17,7 +17,7 @@ app.use('/api/v1', apiRoutes);
 
 
 app.listen(port, () => {
-  ('Started on port 3000');
+  console.log('Started on port 3000');
 });
 
 export default app;

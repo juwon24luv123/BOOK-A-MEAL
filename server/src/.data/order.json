@@ -1,7 +1,7 @@
 
 [
     {
-        "id": 12,
+        "id": 1,
         "tittle": "Jollof rice",
         "time": "breakfast",
         "quantity": 6
@@ -14,14 +14,14 @@
     },
 
     {
-        "id": 32,
+        "id": 3,
         "tittle": "Eba",
         "time": "dinner",
         "quantity": 4
 
     },
     {
-        "id": 34,
+        "id": 4,
         "tittle": "refreshment",
         "time": "evening",
         "quantity": 1000

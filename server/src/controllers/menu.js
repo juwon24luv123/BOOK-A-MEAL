@@ -1,4 +1,4 @@
-import menuDb from '../.data/menu';
+import menuDb from '../.data/menu.json';
 
 /**
  * @exports
@@ -7,18 +7,19 @@ import menuDb from '../.data/menu';
  */
 class Menu {
   /**
-   * @method postMenu
+   * @method createMenu
    * @param {object} req
    * @param {object} res
    * @returns {array} Returns a lists of Meal
   */
-  static postMenu(req, res) {
+  static createMenu(req, res) {
     if (!req.body.tittle || !req.body.description || !req.body.price ||
       !req.body.imageUrl || !req.body.id) {
       return res.status(404).send({ Message: 'Something went wrong, all fields are required' });
     } return res.status(201).send({
       Message: 'Meal was added successfully',
-      menu: [menuDb].concat(req.body)
+      // menu: (req.body)
+      menu: [...menuDb, (req.body)]
     });
   }
   /**

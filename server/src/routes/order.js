@@ -4,7 +4,7 @@ import OrderController from '../controllers/order';
 const orderRoute = express.Router();
 
 orderRoute.get('/', OrderController.getOrder);
-orderRoute.post('/', OrderController.postOrder);
-orderRoute.put('/', OrderController.putOrder);
+orderRoute.post('/', OrderController.createOrder);
+orderRoute.put('/', OrderController.updateOrder);
 
 export default orderRoute;

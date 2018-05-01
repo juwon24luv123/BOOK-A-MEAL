@@ -7,12 +7,13 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+// it log all request sent to the server
 app.use(logger('dev'));
 
 // middleware for Express
 app.use(bodyParser.json());
 
-
+// middleware
 app.use('/api/v1', apiRoutes);
 
 

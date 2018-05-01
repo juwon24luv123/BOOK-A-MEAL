@@ -5,8 +5,8 @@ import MealsController from '../controllers/meals';
 const mealsRoute = express.Router();
 
 mealsRoute.get('/', MealsController.getMeals);
-mealsRoute.post('/', MealsController.postMeals);
-mealsRoute.put('/', MealsController.putMeal);
-mealsRoute.delete('/', MealsController.deleteMeals);
+mealsRoute.post('/', MealsController.createMeals);
+mealsRoute.put('/', MealsController.updateMeal);
+mealsRoute.delete('/:id', MealsController.deleteMeals);
 
 export default mealsRoute;

@@ -7,12 +7,12 @@ import orderDb from '../.data/order.json';
  */
 class Order {
   /**
-   * @method postOrder
+   * @method createOrder
    * @param {object} req
    * @param {object} res
    * @returns {array} return list of order
    */
-  static postOrder(req, res) {
+  static createOrder(req, res) {
     if (!req.body.id || !req.body.tittle || !req.body.quantity || !req.body.time) {
       return res.status(400).send({ Message: 'all field are required' });
     }
@@ -22,12 +22,12 @@ class Order {
     });
   }
   /**
-   * @method putOrder
+   * @method updateOrder
    * @param {object} req
    * @param {object} res
    * @returns {array} return list of order
    */
-  static putOrder(req, res) {
+  static updateOrder(req, res) {
     const orderArray = orderDb;
     let i;
     for (i = 0; i < orderArray.length; i += 1) {

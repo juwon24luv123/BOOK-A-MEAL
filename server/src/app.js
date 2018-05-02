@@ -2,9 +2,11 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes';
+// import json from './.data/meals.json';
 
 const app = express();
 
+// console.log(json);
 const port = process.env.PORT || 3000;
 
 // it log all request sent to the server

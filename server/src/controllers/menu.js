@@ -1,5 +1,6 @@
 import menuDb from '../.data/menu.json';
 
+
 /**
  * @exports
  * @class Menu
@@ -13,13 +14,14 @@ class Menu {
    * @returns {array} Returns a lists of Meal
   */
   static createMenu(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price ||
-      !req.body.imageUrl || !req.body.id) {
-      return res.status(404).send({ Message: 'Something went wrong, all fields are required' });
-    } return res.status(201).send({
-      Message: 'Meal was added successfully',
-      // menu: (req.body)
-      menu: [...menuDb, (req.body)]
+  // adding meal to the mealdb
+    menuDb.push({
+      id: menuDb[menuDb.length - 1].id + 1,
+      ...req.body
+    });
+    return res.status(201).send({
+      Message: 'menu was added successfully',
+      menu: req.body
     });
   }
   /**
@@ -30,7 +32,7 @@ class Menu {
   */
   static getMenu(req, res) {
     res.status(200).send({
-      menu: menuDb
+      menus: menuDb
     });
   }
 }

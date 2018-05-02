@@ -13,11 +13,13 @@ class Order {
    * @returns {array} return list of order
    */
   static createOrder(req, res) {
-    if (!req.body.id || !req.body.tittle || !req.body.quantity || !req.body.time) {
-      return res.status(400).send({ Message: 'all field are required' });
-    }
+    // adding meal to the mealdb
+    orderDb.push({
+      id: orderDb[orderDb.length - 1].id + 1,
+      ...req.body
+    });
     return res.status(201).send({
-      Message: 'Meal was added successfully',
+      Message: 'order was added successfully',
       meals: req.body
     });
   }
@@ -31,11 +33,11 @@ class Order {
     const orderArray = orderDb;
     let i;
     for (i = 0; i < orderArray.length; i += 1) {
-      if (orderArray[i].id === req.body.id) {
-        orderArray[i].tittle = req.body.tittle;
-        orderArray[i].time = req.body.time;
-        orderArray[i].quantity = req.body.quantity;
-        // orderArray[i] = req.body;
+      if (parseInt(orderArray[i].id, 10) === parseInt(req.params.id, 10)) {
+        orderArray[i] = {
+          ...orderArray[i],
+          ...req.body
+        };
         return res.status(201).send({
           order: orderArray[i]
         });

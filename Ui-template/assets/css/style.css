@@ -283,9 +283,9 @@ li a{
 
 }
 /* footer padding  */
-footer {
+/* footer {
     padding-top: 35px;
-}
+} */
 /* footer ul and li stying  */
 ul.footer li {
 	display: inline;
@@ -378,7 +378,6 @@ ul.footer li {
         font-family: 'Tangerine', cursive;
     }
 }
-
 
 
 

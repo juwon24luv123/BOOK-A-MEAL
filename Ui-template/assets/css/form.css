@@ -76,7 +76,7 @@ input{
     cursor: pointer;
     align-self: center;
     transition: all .5s ease;
-    font-family: 'Berkshire Swash', cursive;
+    /* font-family: 'Berkshire Swash', cursive; */
 }
 
 .float{
@@ -88,8 +88,8 @@ input{
  .float, .left{
     width: 50%;
     float: left;
-    background:rgba(255, 230, 120, 0.582);
-    background-image: url('../img/rest.jpg');
+    background:#fff;
+    /* background-image: url('../img/rest.jpg'); */
     height:100vh;
 }
  .float, .right{

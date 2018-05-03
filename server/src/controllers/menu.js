@@ -10,7 +10,7 @@ class Menu {
    * @method postMenu
    * @param {object} req
    * @param {object} res
-   * @returns {array} Returns a lists of Meals
+   * @returns {array} Returns a lists of Meal
   */
   static postMenu(req, res) {
     if (!req.body.tittle || !req.body.description || !req.body.price ||

@@ -30,7 +30,7 @@ h1, h2{
     font-family: 'Tangerine', cursive;
 
 }
-tr:hover{
+td:hover{
     background-color:goldenrod;
 }
 .container-table{
@@ -46,8 +46,6 @@ tr:hover{
 
 @media screen and (max-width: 480px) {
     body, {
-        background-color: olive;
-        color: white;
         width: 350px;
         text-align: center;
     }
@@ -55,9 +53,7 @@ tr:hover{
 }
 @media screen and (max-width:1024px) {
     body {
-        background-color: olive;
-        color: white;
-        overflow: auto !important;
+        overflow: auto;
         font-size: 14px;    
     }
 }

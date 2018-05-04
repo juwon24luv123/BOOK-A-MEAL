@@ -1,12 +1,12 @@
 import express from 'express';
 import MealsController from '../controllers/meals';
+import ValidateMeals from '../middlewares/meal';
 
-// const mealController = new mealController();
 const mealsRoute = express.Router();
 
 mealsRoute.get('/', MealsController.getMeals);
-mealsRoute.post('/', MealsController.postMeals);
-mealsRoute.put('/', MealsController.putMeal);
-mealsRoute.delete('/', MealsController.deleteMeals);
+mealsRoute.post('/:id', ValidateMeals.createMeals, MealsController.createMeals);
+mealsRoute.put('/:id', MealsController.updateMeal);
+mealsRoute.delete('/:id', MealsController.deleteMeals);
 
 export default mealsRoute;

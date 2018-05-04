@@ -1,4 +1,5 @@
 import orderDb from '../.data/order.json';
+import mealDb from '../.data/meals.json';
 
 /**
  * @exports
@@ -7,35 +8,36 @@ import orderDb from '../.data/order.json';
  */
 class Order {
   /**
-   * @method postOrder
+   * @method createOrder
    * @param {object} req
    * @param {object} res
    * @returns {array} return list of order
    */
-  static postOrder(req, res) {
-    if (!req.body.id || !req.body.tittle || !req.body.quantity || !req.body.time) {
-      return res.status(400).send({ Message: 'all field are required' });
-    }
+  static createOrder(req, res) {
+    // adding meal to the mealdb
+    orderDb.push({
+      id: orderDb[orderDb.length - 1].id + 1,
+    });
     return res.status(201).send({
-      Message: 'Meal was added successfully',
+      Message: 'order was added successfully',
       meals: req.body
     });
   }
   /**
-   * @method putOrder
+   * @method updateOrder
    * @param {object} req
    * @param {object} res
    * @returns {array} return list of order
    */
-  static putOrder(req, res) {
+  static updateOrder(req, res) {
     const orderArray = orderDb;
     let i;
     for (i = 0; i < orderArray.length; i += 1) {
-      if (orderArray[i].id === req.body.id) {
-        orderArray[i].tittle = req.body.tittle;
-        orderArray[i].time = req.body.time;
-        orderArray[i].quantity = req.body.quantity;
-        // orderArray[i] = req.body;
+      if (parseInt(orderArray[i].id, 10) === parseInt(req.params.id, 10)) {
+        orderArray[i] = {
+          ...orderArray[i],
+          ...req.body
+        };
         return res.status(201).send({
           order: orderArray[i]
         });
@@ -52,13 +54,19 @@ class Order {
  * @returns {array} retutn all list order
  */
   static getOrder(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(404).send({ Message: 'Something went wrong, cant get all the orders' });
-    } else {
-      res.status(201).send({
-        order: orderDb
-      });
-    }
+    orderDb.forEach((order) => {
+      for (let i = 0; i < order.meals.length; i += 1) {
+        mealDb.forEach((meal) => {
+          if (meal.id === order.meals[i]) {
+            order.meals[i] = meal;
+          }
+        });
+      }
+    });
+    res.status(200).send({
+      success: true,
+      orderDb
+    });
   }
 }
 

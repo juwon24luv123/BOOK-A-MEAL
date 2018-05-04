@@ -1,4 +1,6 @@
-import menuDb from '../.data/menu';
+import menuDb from '../.data/menu.json';
+import mealDb from '../.data/meals.json';
+
 
 /**
  * @exports
@@ -7,18 +9,20 @@ import menuDb from '../.data/menu';
  */
 class Menu {
   /**
-   * @method postMenu
+   * @method createMenu
    * @param {object} req
    * @param {object} res
-   * @returns {array} Returns a lists of Meals
+   * @returns {array} Returns a lists of Meal
   */
-  static postMenu(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price ||
-      !req.body.imageUrl || !req.body.id) {
-      return res.status(404).send({ Message: 'Something went wrong, all fields are required' });
-    } return res.status(201).send({
-      Message: 'Meal was added successfully',
-      menu: [menuDb].concat(req.body)
+  static createMenu(req, res) {
+  // adding meal to the mealdb
+    menuDb.push({
+      id: menuDb[menuDb.length - 1].id + 1,
+      ...req.body
+    });
+    return res.status(201).send({
+      Message: 'menu was added successfully',
+      menu: req.body
     });
   }
   /**
@@ -28,8 +32,19 @@ class Menu {
    * @returns {array} Returns a lists of Meals
   */
   static getMenu(req, res) {
+    // console.log(mealDb);
+    menuDb.forEach((menu) => {
+      for (let i = 0; i < menu.meals.length; i += 1) {
+        mealDb.forEach((meal) => {
+          if (meal.id === menu.meals[i]) {
+            menu.meals[i] = meal;
+          }
+        });
+      }
+    });
     res.status(200).send({
-      menu: menuDb
+      success: true,
+      menuDb
     });
   }
 }

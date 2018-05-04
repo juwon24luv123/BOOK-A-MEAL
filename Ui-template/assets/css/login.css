@@ -39,7 +39,9 @@ form{
 	flex-direction:column;
     margin: 1px 0;
     font-size: 20px;
-    font-family: 'Saira Extra Condensed', sans-serif;
+    /* font-family: 'Saira Extra Condensed', sans-serif; */
+    font-family: 'Berkshire Swash', cursive;
+    color: goldenrod;
 }
 
 .Submit{
@@ -78,7 +80,7 @@ input{
     cursor: pointer;
     align-self: center;
     transition: all .5s ease;
-    font-family: 'Berkshire Swash', cursive;
+    /* font-family: 'Berkshire Swash', cursive; */
 }
 
 
@@ -91,8 +93,9 @@ input{
  .float, .left{
     width: 50%;
     float: left;
-    background:rgba(255, 230, 120, 0.582);
-    background-image: url('../img/rest.jpg');
+    background:#fff;
+    /* background:url('../img/dinning.jpg');
+    background-size: cover; */
     height: 100vh;
    
 }
@@ -106,8 +109,8 @@ input{
     height: 100vh;
     background-image:linear-gradient(to right bottom,
     rgba(206, 213, 111, 0.123),
-     rgba(147, 40, 180, 0.123)), 
-     url('../img/dinning.jpg');
+     rgba(147, 40, 180, 0.123)),
+     url('../img/rest.jpg'); 
     background-size: cover;
     width: 100%;
 }

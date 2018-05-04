@@ -1,7 +1,5 @@
-/* eslint-disable */
+// /* eslint-disable */
 import mealsDB from '../.data/meals.json';
-// import expressValidator from 'express-validator';
-// const { check, validationResult } = require('express-validator/check');
 
 /**
  * @exports
@@ -16,53 +14,53 @@ class Meals {
    * @returns {array} Returns a lists of Meals
   */
   static getMeals(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(404).send({ Message: 'Something went wrong, cannot process your request' });
-    } else {
-      res.status(200).send({
-        meals: mealsDB
-      });
-    }
+    return res.status(200).send({
+      success: true,
+      message: 'Get all meals successfully',
+      mealsDB
+    });
   }
   /**
-   * @method postMeals
+   * @method createMeals
    * @param {object} req
    * @param {object} res
    * @return {array} Returns a list of Meals
    */
-  static postMeals(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price ||
-      !req.body.imageUrl || !req.body.id) {
-      return res.status(400).send({ Message: 'all field are required' });
-    }
+  static createMeals(req, res) {
+    // adding meal to the mealdb
+    mealsDB.push({
+      id: mealsDB[mealsDB.length - 1].id + 1,
+      ...req.body
+    });
     return res.status(201).send({
       Message: 'Meal was added successfully',
       meals: req.body
     });
   }
   /**
-   * @method putMeals
+   * @method updateMeal
    * @param {object} req
    * @param {oblect} res
    * @return {array}  Returns a list of Meals
    */
-  static putMeal(req, res) {
+  static updateMeal(req, res) {
     const orderArray = mealsDB;
     let i;
     for (i = 0; i < orderArray.length; i += 1) {
-      if (orderArray[i].id === req.body.id) {
-        orderArray[i].tittle = req.body.tittle;
-        orderArray[i].description = req.body.description;
-        orderArray[i].price = req.body.price;
-        orderArray[i].imageUrl = req.body.imageUrl;
-        orderArray[i] = req.body;
+      if (orderArray[i].id === req.params.id) {
+        orderArray[i] = {
+          ...orderArray[i],
+          ...req.body
+        };
         return res.status(201).send({
+          success: true,
           meals: orderArray[i]
         });
       }
     }
     return res.status(404).json({
-      success: 'incorrect field supplied.'
+      message: 'incorrect field supplied.',
+      success: false
     });
   }
   /**
@@ -72,23 +70,21 @@ class Meals {
    * @return {array} Return a list of Meals
    */
   static deleteMeals(req, res) {
-    if (!req.body.tittle || !req.body.description || !req.body.price ||
-      !req.body.imageUrl || !req.body.id) {
-      res.status(204).send({ Message: '' });
-    } else {
-      const meals = mealsDB.filter((meal) => {
-        let data = [];
-        const parsedId = parseInt(req.query.id, 10);
-        if (parsedId !== meal.id) {
-          data = data.concat(meal);
-          return data;
-        }
-      });
-      res.send({
-        Message: 'meal has been deleted',
-        meal: meals
-      });
-    }
+    const mealId = parseInt(req.params.id, 10);
+    mealsDB.forEach((meal, index) => {
+      if (meal.id === mealId) {
+        mealsDB.splice(index, 1);
+        return res.status(200).send({
+          success: true,
+          Message: 'meal has been deleted.'
+        });
+      }
+    });
+    return res.status(404).send({
+      success: false,
+      message: `meal with ${mealId} not found`
+    });
   }
 }
+
 export default Meals;

@@ -5,19 +5,23 @@ import apiRoutes from './routes';
 
 const app = express();
 
+// console.log(json);
 const port = process.env.PORT || 3000;
 
+// it log all request sent to the server
 app.use(logger('dev'));
 
 // middleware for Express
 app.use(bodyParser.json());
 
-
+// middleware
 app.use('/api/v1', apiRoutes);
+
+// const db = require('../../models');
 
 
 app.listen(port, () => {
-  ('Started on port 3000');
+  console.log('Started on port 3000');
 });
 
 export default app;

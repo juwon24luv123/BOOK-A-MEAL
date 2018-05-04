@@ -22,7 +22,7 @@ describe('Test For Meal Route', () => {
 });
 
 describe('Test For Post Meal Route', () => {
-  describe('Post /mealsRoutes', () => {
+  describe('create /mealsRoutes', () => {
     it('it should Add a meal option if all field are right', (done) => {
       chai.request(app)
         .post('/api/v1/meals')
@@ -40,7 +40,7 @@ describe('Test For Post Meal Route', () => {
     });
 
 
-    it('should not create a meal when all required properties are not provided', (done) => {
+    it('should not update a meal when all required properties are not provided', (done) => {
       chai.request(app)
         .put('/api/v1/meals')
         .send({
@@ -75,7 +75,7 @@ describe('Test For Post Meal Route', () => {
 
 
 describe('Test For meal update Route', () => {
-  describe('Post /mealsRoutes/id', () => {
+  describe('create /mealsRoutes/id', () => {
     it('should return a error for post without field', (done) => {
       chai.request(app)
         .post('/api/v1/meals/')
@@ -104,7 +104,7 @@ describe('Test For meal update Route', () => {
 });
 
 describe('Test For Post Menu Option Route', () => {
-  describe('Post /menuRoutes', () => {
+  describe('create /menuRoutes', () => {
     it('it should Add a menu option if all field are right', (done) => {
       chai.request(app)
         .post('/api/v1/menu')
@@ -134,7 +134,7 @@ describe('Test For Post Menu Option Route', () => {
 });
 
 describe('Test For put order Route', () => {
-  describe('post /orderRoutes', () => {
+  describe('create /orderRoutes', () => {
     it('it should create new order meal option if all field are right', (done) => {
       chai.request(app)
         .post('/api/v1/order')
@@ -175,7 +175,7 @@ describe('Test For put order Route', () => {
 
 
 describe('Test For put order Route', () => {
-  describe('post /orderRoutes', () => {
+  describe('create /orderRoutes', () => {
     it('it should  selete meal from the order and make a request for order', (done) => {
       chai.request(app)
         .post('/api/v1/order')
@@ -194,7 +194,7 @@ describe('Test For put order Route', () => {
 });
 
 describe('Test For get order Route', () => {
-  describe('post /orderRoutes', () => {
+  describe('create /orderRoutes', () => {
     it('it should populate all the order', (done) => {
       chai.request(app)
         .get('/api/v1/order')

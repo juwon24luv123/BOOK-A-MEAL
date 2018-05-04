@@ -1,4 +1,5 @@
 import menuDb from '../.data/menu.json';
+import mealDb from '../.data/meals.json';
 
 
 /**
@@ -31,8 +32,19 @@ class Menu {
    * @returns {array} Returns a lists of Meals
   */
   static getMenu(req, res) {
+    // console.log(mealDb);
+    menuDb.forEach((menu) => {
+      for (let i = 0; i < menu.meals.length; i += 1) {
+        mealDb.forEach((meal) => {
+          if (meal.id === menu.meals[i]) {
+            menu.meals[i] = meal;
+          }
+        });
+      }
+    });
     res.status(200).send({
-      menus: menuDb
+      success: true,
+      menuDb
     });
   }
 }

@@ -4,44 +4,20 @@
         "id": 1,
         "time": "breakfast",
         "quantity": 6,
-        "meals": [
-            {
-                "mealid": 1,
-                "title": "Jollof rice",
-                "description": "plantain, turkey and beef",
-                "price": 1500,
-                "imageUrl": "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"    
-            }
-            ] 
+        "meals": [3,1] 
     },
     {
         "id": 2,
         "time": "lunch",
         "quantity": 3,
-        "meals": [
-            {
-                "mealid": 2,
-                "title": "semo",
-                "description": "vegetable, turkey and beef",
-                "price": 1000,
-                "imageUrl": "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            }
-            ] 
+        "meals": [2] 
     },
 
     {
         "id": 3,
         "time": "dinner",
         "quantity": 4,
-        "meals": [
-            {
-                "mealid": 3,
-                "title": "Eba",
-                "description": "vegetable, turkey and beef",
-                "price": 1000,
-                "imageUrl": "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            }
-            ] 
+        "meals": [1,2,3] 
     }
    
 ]

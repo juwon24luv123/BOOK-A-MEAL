@@ -2,7 +2,6 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes';
-// import json from './.data/meals.json';
 
 const app = express();
 
@@ -17,6 +16,8 @@ app.use(bodyParser.json());
 
 // middleware
 app.use('/api/v1', apiRoutes);
+
+// const db = require('../../models');
 
 
 app.listen(port, () => {

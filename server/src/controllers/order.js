@@ -1,4 +1,5 @@
 import orderDb from '../.data/order.json';
+import mealDb from '../.data/meals.json';
 
 /**
  * @exports
@@ -16,7 +17,6 @@ class Order {
     // adding meal to the mealdb
     orderDb.push({
       id: orderDb[orderDb.length - 1].id + 1,
-      ...req.body
     });
     return res.status(201).send({
       Message: 'order was added successfully',
@@ -54,13 +54,19 @@ class Order {
  * @returns {array} retutn all list order
  */
   static getOrder(req, res) {
-    if (res.statusCode !== 200) {
-      res.status(404).send({ Message: 'Something went wrong, cant get all the orders' });
-    } else {
-      res.status(201).send({
-        order: orderDb
-      });
-    }
+    orderDb.forEach((order) => {
+      for (let i = 0; i < order.meals.length; i += 1) {
+        mealDb.forEach((meal) => {
+          if (meal.id === order.meals[i]) {
+            order.meals[i] = meal;
+          }
+        });
+      }
+    });
+    res.status(200).send({
+      success: true,
+      orderDb
+    });
   }
 }
 

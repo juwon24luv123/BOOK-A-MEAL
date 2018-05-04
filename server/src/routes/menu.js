@@ -4,7 +4,7 @@ import ValidateMenu from '../middlewares/menu';
 
 const menuRoute = express.Router();
 
-menuRoute.post('/:id', ValidateMenu.createMenu, MenuController.createMenu);
+menuRoute.post('/:id', ValidateMenu.Validate, MenuController.createMenu);
 menuRoute.get('/', MenuController.getMenu);
 
 

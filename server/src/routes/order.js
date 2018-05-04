@@ -5,7 +5,7 @@ import ValidateOrder from '../middlewares/order';
 const orderRoute = express.Router();
 
 orderRoute.get('/', OrderController.getOrder);
-orderRoute.post('/:id', ValidateOrder.createOrder, OrderController.createOrder);
+orderRoute.post('/:id', ValidateOrder.Validate, OrderController.createOrder);
 orderRoute.put('/:id', OrderController.updateOrder);
 
 export default orderRoute;

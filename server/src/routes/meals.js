@@ -5,7 +5,7 @@ import ValidateMeals from '../middlewares/meal';
 const mealsRoute = express.Router();
 
 mealsRoute.get('/', MealsController.getMeals);
-mealsRoute.post('/:id', ValidateMeals.createMeals, MealsController.createMeals);
+mealsRoute.post('/:id', ValidateMeals.Validate, MealsController.createMeals);
 mealsRoute.put('/:id', MealsController.updateMeal);
 mealsRoute.delete('/:id', MealsController.deleteMeals);
 
